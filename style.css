@@ -19,28 +19,59 @@ body, html {
     height: 100vh;
 }
 
-/* Sidebar */
 #sidebar {
-    width: 320px;
+    width: 330px;
     background-color: #242424;
     padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
     box-shadow: 4px 0 12px rgba(0,0,0,0.3);
     z-index: 10;
+    overflow-y: auto;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #sidebar h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #4CAF50;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 4px;
+    background: #111;
+    padding: 3px;
+    border-radius: 6px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: #888;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.lang-btn.active {
+    background: #4CAF50;
+    color: #fff;
 }
 
 .subtitle {
     font-size: 0.85rem;
     color: #888;
-    margin-top: -12px;
-    margin-bottom: 8px;
+    margin-top: -10px;
+    margin-bottom: 4px;
 }
 
 .input-group {
@@ -73,7 +104,7 @@ body, html {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
 .btn {
@@ -89,7 +120,7 @@ body, html {
     transform: scale(0.98);
 }
 
-.btn.primary { background-color: #4CAF50; color: #white; }
+.btn.primary { background-color: #4CAF50; color: white; }
 .btn.primary:hover { background-color: #45a049; }
 
 .btn.danger { background-color: #f44336; color: white; }
@@ -98,7 +129,6 @@ body, html {
 .btn.success { background-color: #2196F3; color: white; }
 .btn.success:hover { background-color: #0b7dda; }
 
-/* Guide Box */
 .guide-box {
     margin-top: auto;
     background: #181818;
@@ -118,13 +148,20 @@ body, html {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    margin-bottom: 8px;
+}
+
+.delete-tip {
+    font-size: 0.78rem;
+    color: #aaa;
+    border-top: 1px solid #333;
+    padding-top: 6px;
 }
 
 .axis-x { color: #ff4d4d; font-weight: bold; }
 .axis-y { color: #4dff4d; font-weight: bold; }
 .axis-z { color: #4d88ff; font-weight: bold; }
 
-/* Viewport 3D */
 #visualization {
     flex: 1;
     height: 100%;
