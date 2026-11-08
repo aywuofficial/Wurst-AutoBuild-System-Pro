@@ -5,30 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wurst AutoBuild System Pro</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Import Three.js và OrbitControls -->
+    <!-- Three.js & OrbitControls -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
     <div id="app">
-        <!-- Sidebar điều khiển -->
         <aside id="sidebar">
-            <h2>AutoBuild Studio</h2>
-            <p class="subtitle">Tạo và xuất cấu trúc cho Wurst</p>
+            <div class="header-row">
+                <h2>AutoBuild Studio</h2>
+                <div class="lang-switcher">
+                    <button id="lang-vi" class="lang-btn active">VI</button>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                </div>
+            </div>
+            <p class="subtitle" id="t-subtitle">Tạo và xuất cấu trúc cho Wurst</p>
             
             <div class="input-group">
-                <label for="x">Tọa độ X (Trái / Phải)</label>
+                <label for="x" id="t-lbl-x">Tọa độ X (Trái / Phải)</label>
                 <input type="number" id="x" value="0" placeholder="X">
             </div>
             
             <div class="input-group">
-                <label for="y">Tọa độ Y (Lên / Xuống)</label>
+                <label for="y" id="t-lbl-y">Tọa độ Y (Độ cao / Lên Xuống)</label>
                 <input type="number" id="y" value="0" placeholder="Y">
             </div>
             
             <div class="input-group">
-                <label for="z">Tọa độ Z (Tiến / Lùi)</label>
+                <label for="z" id="t-lbl-z">Tọa độ Z (Tiến / Lùi)</label>
                 <input type="number" id="z" value="0" placeholder="Z">
+            </div>
+
+            <div class="input-group">
+                <label for="filename" id="t-lbl-filename">Tên file JSON</label>
+                <input type="text" id="filename" value="structure" placeholder="Nhập tên file...">
             </div>
 
             <div class="button-group">
@@ -37,18 +47,17 @@
                 <button id="download-btn" class="btn success">Tải JSON</button>
             </div>
 
-            <!-- Bảng hướng dẫn tọa độ -->
             <div class="guide-box">
-                <h3> Quy ước tọa độ:</h3>
+                <h3 id="t-guide-title">Quy ước Tọa độ Minecraft:</h3>
                 <ul>
-                    <li><span class="axis-x">■ X:</span> Trái (-) / Phải (+)</li>
-                    <li><span class="axis-y">■ Y:</span> Xuống (-) / Lên (+)</li>
-                    <li><span class="axis-z">■ Z:</span> Lùi (-) / Tiến (+)</li>
+                    <li><span class="axis-x">■ X:</span> <span id="t-axis-x">Trái (-) / Phải (+)</span></li>
+                    <li><span class="axis-y">■ Y:</span> <span id="t-axis-y">Dưới (-) / Lên (+) [Chiều cao]</span></li>
+                    <li><span class="axis-z">■ Z:</span> <span id="t-axis-z">Ra xa (-) / Lại gần (+)</span></li>
                 </ul>
+                <p class="delete-tip" id="t-delete-tip">💡 <em>Mẹo: Click chuột trực tiếp vào khối 3D để xóa khối đó.</em></p>
             </div>
         </aside>
 
-        <!-- Khung hiển thị 3D -->
         <main id="visualization"></main>
     </div>
 
